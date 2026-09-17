@@ -1,858 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>FOREVERMORE APPAREL</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: #0b0b0b;
-      color: #f1eee8;
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.5;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    /* HEADER */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(11,11,11,.94);
-      border-bottom: 1px solid #292929;
-      backdrop-filter: blur(12px);
-    }
-
-    .nav {
-      max-width: 1200px;
-      margin: auto;
-      min-height: 78px;
-      padding: 0 25px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      font-size: 25px;
-      font-weight: 900;
-      letter-spacing: 5px;
-      white-space: nowrap;
-    }
-
-    .logo span {
-      color: #9b1c25;
-    }
-
-    nav {
-      display: flex;
-      gap: 28px;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    nav a {
-      transition: .2s;
-    }
-
-    nav a:hover {
-      color: #9b1c25;
-    }
-
-    /* HERO */
-
-    .hero {
-      min-height: 88vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 80px 25px;
-      background:
-        radial-gradient(circle at center, #242020 0%, #101010 42%, #080808 100%);
-      border-bottom: 1px solid #242424;
-    }
-
-    .hero-content {
-      max-width: 900px;
-    }
-
-    .eyebrow {
-      color: #a52a32;
-      text-transform: uppercase;
-      letter-spacing: 5px;
-      font-size: 12px;
-      margin-bottom: 22px;
-    }
-
-    .hero h1 {
-      font-size: clamp(55px, 12vw, 145px);
-      line-height: .85;
-      letter-spacing: -5px;
-      font-weight: 900;
-    }
-
-    .hero h1 span {
-      display: block;
-      color: #9b1c25;
-    }
-
-    .hero p {
-      max-width: 600px;
-      margin: 35px auto;
-      color: #bdb9b1;
-      font-size: 15px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 15px 28px;
-      border: 1px solid #f1eee8;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 12px;
-      transition: .25s;
-      cursor: pointer;
-      background: transparent;
-      color: #f1eee8;
-    }
-
-    .button:hover {
-      background: #9b1c25;
-      border-color: #9b1c25;
-    }
-
-    /* GENERAL */
-
-    section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 100px 25px;
-    }
-
-    .section-title {
-      margin-bottom: 45px;
-    }
-
-    .section-title small {
-      color: #9b1c25;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 11px;
-    }
-
-    .section-title h2 {
-      font-size: clamp(38px, 7vw, 72px);
-      text-transform: uppercase;
-      letter-spacing: -2px;
-      margin-top: 8px;
-    }
-
-    /* FEATURE */
-
-    .feature {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-    }
-
-    .feature-box {
-      min-height: 430px;
-      border: 1px solid #303030;
-      background: #121212;
-      display: flex;
-      align-items: flex-end;
-      padding: 30px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .feature-box::before {
-      content: "FOREVERMORE";
-      position: absolute;
-      top: 45%;
-      left: 50%;
-      transform: translate(-50%,-50%) rotate(-10deg);
-      font-size: 55px;
-      font-weight: 900;
-      color: rgba(155,28,37,.09);
-      white-space: nowrap;
-    }
-
-    .feature-text {
-      position: relative;
-      z-index: 2;
-    }
-
-    .feature-text h3 {
-      font-size: 32px;
-      text-transform: uppercase;
-    }
-
-    .feature-text p {
-      color: #aaa;
-      margin-top: 8px;
-    }
-
-    /* SHOP */
-
-    #shop {
-      border-top: 1px solid #242424;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .product {
-      background: #111;
-      border: 1px solid #303030;
-      overflow: hidden;
-      transition: transform .25s, border-color .25s;
-    }
-
-    .product:hover {
-      transform: translateY(-5px);
-      border-color: #9b1c25;
-    }
-
-    .product-image {
-      height: 360px;
-      background:
-        linear-gradient(135deg, #191919, #0b0b0b);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      border-bottom: 1px solid #292929;
-    }
-
-    .product-image span {
-      color: #666;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 10px;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .product-info {
-      padding: 20px;
-    }
-
-    .product-info h3 {
-      font-size: 18px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .product-info p {
-      color: #9b1c25;
-      margin-top: 7px;
-      font-weight: bold;
-    }
-
-    /* BUNDLE */
-
-    .bundle {
-      margin-top: 60px;
-      padding: 45px;
-      border: 1px solid #672027;
-      background: linear-gradient(135deg,#181010,#0d0d0d);
-      text-align: center;
-    }
-
-    .bundle h3 {
-      font-size: 35px;
-      text-transform: uppercase;
-    }
-
-    .bundle p {
-      color: #aaa;
-      margin: 10px auto 20px;
-      max-width: 600px;
-    }
-
-    .price {
-      font-size: 28px;
-      color: #a52a32;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    /* STORY */
-
-    #story {
-      border-top: 1px solid #242424;
-    }
-
-    .story {
-      max-width: 800px;
-    }
-
-    .story p {
-      color: #bcb8b0;
-      font-size: 18px;
-      margin-bottom: 25px;
-    }
-
-    .quote {
-      border-left: 3px solid #9b1c25;
-      padding-left: 25px;
-      margin-top: 45px;
-      font-size: 30px;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-
-    /* LOOKBOOK */
-
-    .lookbook-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .look {
-      height: 480px;
-      border: 1px solid #303030;
-      background:
-        linear-gradient(135deg,#171717,#0a0a0a);
-      display: flex;
-      align-items: flex-end;
-      padding: 25px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .look:nth-child(2),
-    .look:nth-child(3) {
-      min-height: 350px;
-    }
-
-    .look::after {
-      content: "FOREVERMORE";
-      position: absolute;
-      font-size: 70px;
-      font-weight: 900;
-      color: rgba(255,255,255,.035);
-      transform: rotate(-8deg);
-      white-space: nowrap;
-      left: 5%;
-      top: 45%;
-    }
-
-    .look h3 {
-      position: relative;
-      z-index: 2;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    /* FOOTER */
-
-    footer {
-      border-top: 1px solid #292929;
-      padding: 60px 25px;
-      text-align: center;
-    }
-
-    footer .logo {
-      margin-bottom: 15px;
-    }
-
-    footer p {
-      color: #777;
-      font-size: 12px;
-    }
-
-    .footer-links {
-      margin: 25px 0;
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 800px) {
-
-      .nav {
-        min-height: 70px;
-        padding: 0 16px;
-      }
-
-      .logo {
-        font-size: 17px;
-        letter-spacing: 3px;
-      }
-
-      nav {
-        gap: 13px;
-        font-size: 9px;
-        letter-spacing: 1px;
-      }
-
-      .hero {
-        min-height: 78vh;
-      }
-
-      .hero h1 {
-        letter-spacing: -3px;
-      }
-
-      section {
-        padding: 75px 18px;
-      }
-
-      .feature {
-        grid-template-columns: 1fr;
-      }
-
-      .products {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-
-      .product-image {
-        height: 250px;
-      }
-
-      .product-info {
-        padding: 15px;
-      }
-
-      .product-info h3 {
-        font-size: 14px;
-      }
-
-      .bundle {
-        padding: 30px 20px;
-      }
-
-      .lookbook-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .look {
-        height: 400px;
-      }
-
-      .quote {
-        font-size: 22px;
-      }
-    }
-
-    @media (max-width: 480px) {
-
-      nav {
-        gap: 8px;
-      }
-
-      .products {
-        grid-template-columns: 1fr;
-      }
-
-      .product-image {
-        height: 330px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forevermore Apparel</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Cormorant+Garamond:ital,wght@1,500&display=swap');
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#171515;font-family:"Playfair Display",Georgia,serif}
+a{color:inherit;text-decoration:none}
+
+header{background:#fff;border-bottom:1px solid #e7e4e1}
+.header-inner{max-width:1100px;margin:auto;text-align:center;padding:54px 20px 30px;position:relative}
+.logo{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:64px;line-height:.8;color:#8e2028;letter-spacing:-2px}
+.apparel{margin-top:24px;font-family:Georgia,serif;font-size:15px;letter-spacing:10px;padding-left:10px}
+.club{position:absolute;right:25px;top:90px;font-size:48px;font-family:Georgia,serif}
+nav{display:flex;justify-content:center;gap:42px;margin-top:42px;font-size:16px;letter-spacing:6px}
+nav a:hover{color:#8e2028}
+
+.hero{min-height:65vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:90px 20px}
+.hero h1{font-size:clamp(38px,7vw,70px);font-weight:400;letter-spacing:12px;margin:0}
+.hero p{margin:28px auto 0;max-width:650px;font-size:18px;line-height:1.8}
+.section{max-width:1100px;margin:auto;padding:100px 25px}
+.section-title{text-align:center;font-size:38px;letter-spacing:11px;font-weight:400;margin:0 0 75px}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:70px 28px}
+.product{text-align:center}
+.product-photo{aspect-ratio:4/5;background:#f7f4f0;display:flex;align-items:center;justify-content:center;padding:25px;color:#8e2028;font-family:Georgia,serif;font-size:13px;letter-spacing:3px}
+.product-name{font-size:18px;margin-top:22px}
+.price{font-family:Arial,sans-serif;font-size:14px;letter-spacing:2px;margin-top:9px}
+.story{border-top:1px solid #e7e4e1;border-bottom:1px solid #e7e4e1;text-align:center;padding:120px 25px}
+.story h2{font-size:38px;letter-spacing:10px;font-weight:400;margin:0 0 55px}
+.story p{max-width:780px;margin:auto;font-size:23px;line-height:1.8}
+.lookbook{text-align:center;padding-bottom:120px}
+.lookbook-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px;margin:auto}
+.look{aspect-ratio:1/1;background:#f7f4f0;display:flex;align-items:center;justify-content:center;font-size:24px;letter-spacing:5px}
+footer{border-top:1px solid #e7e4e1;text-align:center;padding:55px 20px;font-size:13px;letter-spacing:5px;line-height:2}
+
+@media(max-width:700px){
+ .header-inner{padding-top:38px}
+ .logo{font-size:48px}
+ .club{right:16px;top:62px;font-size:34px}
+ .apparel{font-size:11px;letter-spacing:7px}
+ nav{gap:18px;margin-top:32px;font-size:11px;letter-spacing:3px}
+ .hero{min-height:55vh;padding:70px 20px}
+ .hero h1{font-size:30px;letter-spacing:7px}
+ .hero p{font-size:16px}
+ .section{padding:75px 18px}
+ .section-title,.story h2{font-size:29px;letter-spacing:7px}
+ .products{grid-template-columns:1fr 1fr;gap:45px 12px}
+ .product-photo{aspect-ratio:4/5}
+ .product-name{font-size:14px}
+ .price{font-size:12px}
+ .story{padding:85px 20px}
+ .story p{font-size:18px}
+ .lookbook-grid{grid-template-columns:1fr}
+}
+@media(max-width:430px){
+ .logo{font-size:42px}
+ .club{font-size:30px}
+ nav{gap:12px;font-size:9px}
+ .products{grid-template-columns:1fr}
+}
+</style>
 </head>
-
 <body>
 
-  <!-- HEADER -->
-
-  <header>
-    <div class="nav">
-
-      <a href="#home" class="logo">
-        FOREVER<span>MORE</span>
-      </a>
-
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#shop">Shop</a>
-        <a href="#story">Story</a>
-        <a href="#lookbook">Lookbook</a>
-      </nav>
-
-    </div>
-  </header>
-
-
-  <!-- HOME -->
-
-  <main id="home">
-
-    <div class="hero">
-
-      <div class="hero-content">
-
-        <div class="eyebrow">
-          FOREVERMORE APPAREL
-        </div>
-
-        <h1>
-          FOREVER
-          <span>MORE</span>
-        </h1>
-
-        <p>
-          DARKNESS. MEMORY. LOVE.
-          <br>
-          CLOTHING MADE TO LIVE FOREVER.
-        </p>
-
-        <a href="#shop" class="button">
-          Shop Collection
-        </a>
-
-      </div>
-
-    </div>
-
-
-    <!-- FEATURED -->
-
-    <section>
-
-      <div class="section-title">
-        <small>01 / Collection</small>
-        <h2>Featured</h2>
-      </div>
-
-      <div class="feature">
-
-        <div class="feature-box">
-          <div class="feature-text">
-            <h3>My Angel</h3>
-            <p>Thermal — $25</p>
-          </div>
-        </div>
-
-        <div class="feature-box">
-          <div class="feature-text">
-            <h3>Evergreen</h3>
-            <p>Shirt — $20 · Thermal — $25</p>
-          </div>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- SHOP -->
-
-    <section id="shop">
-
-      <div class="section-title">
-        <small>02 / Shop</small>
-        <h2>Collection</h2>
-      </div>
-
-      <div class="products">
-
-
-        <!-- HEADSHOT LONG -->
-
-        <article class="product">
-
-          <div class="product-image">
-            <span>
-              PRODUCT PHOTO
-              <br>
-              HEADSHOT LONG BEANIE
-            </span>
-          </div>
-
-          <div class="product-info">
-            <h3>Headshot Long Beanie</h3>
-            <p>$10</p>
-          </div>
-
-        </article>
-
-
-        <!-- HEADSHOT SHORT -->
-
-        <article class="product">
-
-          <div class="product-image">
-            <span>
-              PRODUCT PHOTO
-              <br>
-              HEADSHOT SHORT BEANIE
-            </span>
-          </div>
-
-          <div class="product-info">
-            <h3>Headshot Short Beanie</h3>
-            <p>$11</p>
-          </div>
-
-        </article>
-
-
-        <!-- MY ANGEL -->
-
-        <article class="product">
-
-          <div class="product-image">
-            <span>
-              PRODUCT PHOTO
-              <br>
-              MY ANGEL THERMAL
-            </span>
-          </div>
-
-          <div class="product-info">
-            <h3>My Angel Thermal</h3>
-            <p>$25</p>
-          </div>
-
-        </article>
-
-
-        <!-- ALL THE FLESH ROTS THERMAL -->
-
-        <article class="product">
-
-          <div class="product-image">
-            <span>
-              PRODUCT PHOTO
-              <br>
-              ALL THE FLESH ROTS
-            </span>
-          </div>
-
-          <div class="product-info">
-            <h3>All the Flesh Rots Thermal</h3>
-            <p>$25</p>
-          </div>
-
-        </article>
-
-
-        <!-- ALL THE FLESH ROTS SHIRT -->
-
-        <article class="product">
-
-          <div class="product-image">
-            <span>
-              PRODUCT PHOTO
-              <br>
-              ALL THE FLESH ROTS
-            </span>
-          </div>
-
-          <div class="product-info">
-            <h3>All the Flesh Rots Shirt</h3>
-            <p>$20</p>
-          </div>
-
-        </article>
-
-
-        <!-- EVERGREEN THERMAL -->
-
-        <article class="product">
-
-          <div class="product-image">
-            <span>
-              PRODUCT PHOTO
-              <br>
-              EVERGREEN THERMAL
-            </span>
-          </div>
-
-          <div class="product-info">
-            <h3>Evergreen Thermal</h3>
-            <p>$25</p>
-          </div>
-
-        </article>
-
-
-        <!-- EVERGREEN SHIRT -->
-
-        <article class="product">
-
-          <div class="product-image">
-            <span>
-              PRODUCT PHOTO
-              <br>
-              EVERGREEN SHIRT
-            </span>
-          </div>
-
-          <div class="product-info">
-            <h3>Evergreen Shirt</h3>
-            <p>$20</p>
-          </div>
-
-        </article>
-
-      </div>
-
-
-      <!-- BUNDLE -->
-
-      <div class="bundle">
-
-        <h3>FOREVERMORE Bundle</h3>
-
-        <p>
-          Evergreen T-shirt + Evergreen Thermal
-          + My Angel Thermal
-        </p>
-
-        <div class="price">
-          $45
-        </div>
-
-        <button class="button" onclick="showMessage()">
-          View Bundle
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- STORY -->
-
-    <section id="story">
-
-      <div class="section-title">
-        <small>03 / Story</small>
-        <h2>Our Story</h2>
-      </div>
-
-      <div class="story">
-
-        <p>
-          FOREVERMORE APPAREL was created around the idea
-          that the things we love, remember, and carry with us
-          should never disappear.
-        </p>
-
-        <p>
-          The collection blends dark streetwear with
-          sentimental imagery, oversized silhouettes,
-          and pieces meant to feel personal.
-        </p>
-
-        <p>
-          Every piece represents something that stays.
-          Something forevermore.
-        </p>
-
-        <div class="quote">
-          What remains, remains forever.
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- LOOKBOOK -->
-
-    <section id="lookbook">
-
-      <div class="section-title">
-        <small>04 / Visuals</small>
-        <h2>Lookbook</h2>
-      </div>
-
-      <div class="lookbook-grid">
-
-        <div class="look">
-          <h3>Forevermore</h3>
-        </div>
-
-        <div class="look">
-          <h3>My Angel</h3>
-        </div>
-
-        <div class="look">
-          <h3>Evergreen</h3>
-        </div>
-
-        <div class="look">
-          <h3>All the Flesh Rots</h3>
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <div class="logo">
-      FOREVER<span>MORE</span>
-    </div>
-
-    <div class="footer-links">
-      <a href="#home">Home</a>
-      <a href="#shop">Shop</a>
-      <a href="#story">Story</a>
-      <a href="#lookbook">Lookbook</a>
-    </div>
-
-    <p>
-      © 2026 FOREVERMORE APPAREL. ALL RIGHTS RESERVED.
-    </p>
-
-  </footer>
-
-
-  <script>
-
-    function showMessage() {
-      alert(
-        "FOREVERMORE Bundle — $45\n\n" +
-        "Evergreen T-shirt + Evergreen Thermal + My Angel Thermal"
-      );
-    }
-
-  </script>
+<header>
+  <div class="header-inner">
+    <a href="#home" class="logo">Forevermore</a>
+    <div class="apparel">APPAREL</div>
+    <div class="club">♧</div>
+    <nav>
+      <a href="#home">HOME</a>
+      <a href="#shop">SHOP</a>
+      <a href="#story">STORY</a>
+      <a href="#lookbook">LOOKBOOK</a>
+    </nav>
+  </div>
+</header>
+
+<main id="home">
+  <section class="hero">
+    <div>
+      <h1>SHOP FOREVERMORE</h1>
+      <p>Timeless graphics, heavyweight basics, and a worn-in visual language.</p>
+    </div>
+  </section>
+
+  <section class="section" id="shop">
+    <h2 class="section-title">THE COLLECTION</h2>
+    <div class="products">
+
+      <article class="product">
+        <div class="product-photo">HEADSHOT<br>LONG BEANIE</div>
+        <div class="product-name">Headshot Long Beanie</div>
+        <div class="price">$10</div>
+      </article>
+
+      <article class="product">
+        <div class="product-photo">HEADSHOT<br>SHORT BEANIE</div>
+        <div class="product-name">Headshot Short Beanie</div>
+        <div class="price">$11</div>
+      </article>
+
+      <article class="product">
+        <div class="product-photo">MY ANGEL<br>THERMAL</div>
+        <div class="product-name">My Angel Thermal</div>
+        <div class="price">$25</div>
+      </article>
+
+      <article class="product">
+        <div class="product-photo">ALL THE FLESH ROTS<br>THERMAL</div>
+        <div class="product-name">All the Flesh Rots Thermal</div>
+        <div class="price">$25</div>
+      </article>
+
+      <article class="product">
+        <div class="product-photo">ALL THE FLESH ROTS<br>SHIRT</div>
+        <div class="product-name">All the Flesh Rots Shirt</div>
+        <div class="price">$20</div>
+      </article>
+
+      <article class="product">
+        <div class="product-photo">EVERGREEN<br>THERMAL</div>
+        <div class="product-name">Evergreen Thermal</div>
+        <div class="price">$25</div>
+      </article>
+
+      <article class="product">
+        <div class="product-photo">EVERGREEN<br>SHIRT</div>
+        <div class="product-name">Evergreen Shirt</div>
+        <div class="price">$20</div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="story" id="story">
+    <h2>THE STORY</h2>
+    <p>Forevermore Apparel — timeless graphics, heavyweight basics, and a worn-in visual language.</p>
+  </section>
+
+  <section class="section lookbook" id="lookbook">
+    <h2 class="section-title">LOOKBOOK</h2>
+    <div class="lookbook-grid">
+      <div class="look">FOREVERMORE</div>
+      <div class="look">MY ANGEL</div>
+      <div class="look">EVERGREEN</div>
+      <div class="look">THE COLLECTION</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  FOREVERMORE APPAREL · LOOKBOOK · SHOP
+</footer>
 
 </body>
 </html>
